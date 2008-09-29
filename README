@@ -1,0 +1,19 @@
+Serialization Options
+===========
+
+This is a simple plugin which allows you to avoid specifying serialization
+options every time you call record.to_json, record.to_xml etc. This is done by
+specifying the options at the class level.
+
+Example
+=======
+
+class Post < ActiveRecord::Base
+  self.serialization_options = {
+    :only => %w(id created_at updated_at),
+  }
+end
+
+Post.first.to_json
+
+Copyright (c) 2008 Nathan de Vries (http://www.atnan.com), released under the MIT license
